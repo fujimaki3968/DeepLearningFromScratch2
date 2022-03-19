@@ -1,4 +1,3 @@
-from turtle import forward
 import numpy as np
 from common.functions import softmax, cross_entropy_error
 
@@ -161,5 +160,8 @@ class EmbeddingLayer:
     def backward(self, dout):
         dW, = self.grads
         dW[...] = 0
-        dW[self.idx] = dout
+        
+        for i, word_id in enumerate(self.idx):
+            dW[word_id] += dout[i]
+        
         return None
