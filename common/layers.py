@@ -161,7 +161,10 @@ class EmbeddingLayer:
         dW, = self.grads
         dW[...] = 0
         
-        for i, word_id in enumerate(self.idx):
-            dW[word_id] += dout[i]
+        # 複数回同じ行を参照される可能性があるためしたの様な処理になる
+        np.add.at(dW, self.idx, dout)
+        # same
+        # for i, word_id in enumerate(self.idx):
+        #     dW[word_id] += dout[i]
         
         return None
