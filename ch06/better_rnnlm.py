@@ -48,6 +48,11 @@ class BetterRnnlm(BaseModel):
             xs = layer.forward(xs)
         return xs
     
+    def forward(self, xs, ts, train_flg=True):
+        score = self.predict(xs, train_flg)
+        loss = self.loss_layer.forward(score, ts)
+        return loss
+    
     def backward(self, dout=1):
         dout = self.loss_layer.backowrd(dout)
         for layer in reversed(self.layers):

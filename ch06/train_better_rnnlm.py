@@ -1,8 +1,8 @@
 import sys, os
 
-from common import optimizer
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from common import optimizer
 from common import config
 from common.optimizer import SGD
 from common.trainer import RnnlmTrainer
