@@ -56,5 +56,5 @@ class Rnnlm:
             pickle.dump(self.params, f)
     
     def load_params(self, file_name='Rnnlm.pkl'):
-        with open(file_name, 'wr') as f:
+        with open(file_name, 'rb') as f:
             self.params = pickle.load(f)
