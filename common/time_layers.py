@@ -189,7 +189,7 @@ class TimeSoftmaxWithLoss:
         self.cache = (ts, ys, mask, (N, T, V))
         return loss
 
-    def backowrd(self, dout=1):
+    def backward(self, dout=1):
         ts, ys, mask, (N, T, V) = self.cache
 
         dx = ys
